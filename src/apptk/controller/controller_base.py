@@ -12,11 +12,11 @@ class ControllerBase(ABC):
 
     @abstractmethod
     def __init__(self, title):
+        self._internalLockFlag = False
         # self._mdl = ModelBase()
         # self._mdl.register_client(self)
         # self._ui = ViewBase(self._mdl, self, title)
         # self.plugins = PluginCollection(self._mdl, self._ui, self)
-        pass
 
     def disable_menu(self):
         """Disable menu entries when no project is open."""
@@ -32,6 +32,16 @@ class ControllerBase(ABC):
         """Return a reference to the application's main view object."""
         return self._ui
 
+    def lock(self, event=None):
+        """Lock the project.
+        
+        Return True on success, otherwise return False.
+        """
+        self._internalLockFlag = True
+        self._ui.lock()
+        self.plugins.lock()
+        return True
+
     def on_quit(self):
         self.plugins.on_quit()
         self._ui.on_quit()
@@ -39,3 +49,9 @@ class ControllerBase(ABC):
     def refresh(self):
         """Callback function to report model element modifications."""
         pass
+
+    def unlock(self, event=None):
+        """Unlock the project."""
+        self._internalLockFlag = False
+        self._ui.unlock()
+        self.plugins.unlock()
