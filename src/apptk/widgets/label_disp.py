@@ -18,6 +18,9 @@ class LabelDisp(ttk.Frame):
         self._rightLabel = ttk.Label(self, textvariable=textvariable, anchor='w')
         self._rightLabel.pack(side='left', fill='x', expand=True)
 
+    def config(self, **kwargs):
+        self.configure(**kwargs)
+
     def configure(self, text=None):
         """Configure internal widget."""
         if text is not None:

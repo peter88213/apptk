@@ -13,18 +13,20 @@ class ControllerBase(ABC):
     @abstractmethod
     def __init__(self, title):
         self._internalLockFlag = False
-        # self._mdl = ModelBase()
+
+        #--- Example code:
+        # self._mdl = MyModel()
         # self._mdl.register_client(self)
-        # self._ui = ViewBase(self._mdl, self, title)
+        # self._ui = MyView(self._mdl, self, title)
         # self.plugins = PluginCollection(self._mdl, self._ui, self)
 
     def disable_menu(self):
-        """Disable menu entries when no project is open."""
+        """Disable UI widgets when no project is open."""
         self._ui.disable_menu()
         self.plugins.disable_menu()
 
     def enable_menu(self):
-        """Enable menu entries when a project is open."""
+        """Enable UI widgets when a project is open."""
         self._ui.enable_menu()
         self.plugins.enable_menu()
 
@@ -43,11 +45,12 @@ class ControllerBase(ABC):
         return True
 
     def on_quit(self):
+        """To be executed before exiting the program."""
         self.plugins.on_quit()
         self._ui.on_quit()
 
     def refresh(self):
-        """Callback function to report model element modifications."""
+        """Callback function that responds to changes in the model."""
         pass
 
     def unlock(self, event=None):

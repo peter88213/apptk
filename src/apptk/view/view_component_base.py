@@ -16,11 +16,11 @@ class ViewComponentBase(ABC):
         self._ctrl = controller
 
     def disable_menu(self):
-        """Disable menu entries when no project is open."""
+        """Disable UI widgets, e.g. when no project is open."""
         pass
 
     def enable_menu(self):
-        """Enable menu entries when a project is open."""
+        """Enable UI widgets, e.g. when a project is opened."""
         pass
 
     def lock(self):

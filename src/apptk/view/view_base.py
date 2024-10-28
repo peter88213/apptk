@@ -40,17 +40,17 @@ class ViewBase(ABC):
         return messagebox.askyesno(title, text)
 
     def disable_menu(self):
-        """Disable menu entries when no project is open."""
+        """Disable UI widgets, e.g. when no project is open."""
         for viewComponent in self._viewComponents:
             viewComponent.disable_menu()
 
     def enable_menu(self):
-        """Enable menu entries when a project is open."""
+        """Enable UI widgets, e.g. when a project is opened."""
         for viewComponent in self._viewComponents:
             viewComponent.enable_menu()
 
     def lock(self):
-        """Make the "locked" state visible."""
+        """Inhibit changes on the model."""
         for viewComponent in self._viewComponents:
             viewComponent.lock()
 
@@ -59,17 +59,21 @@ class ViewBase(ABC):
         self.root.quit()
 
     def refresh(self):
-        """Update view components."""
+        """Refresh all view components."""
         for viewComponent in self._viewComponents:
             viewComponent.refresh()
 
     def register_view(self, viewComponent):
-        """Add a view object to the composite list."""
+        """Add a view object to the composite list.
+        
+        Positional arguments:
+            viewComponent -- Reference to a ViewComponentBase subclass instance.
+        """
         if not viewComponent in self._viewComponents:
             self._viewComponents.append(viewComponent)
 
     def set_info(self, message):
-        """Set a message for display in any info area.
+        """Set a buffered message for display in any info area.
         
         Positional arguments:
             message -- message to be buffered.
@@ -77,12 +81,12 @@ class ViewBase(ABC):
         self.infoWhatText = message
 
     def set_status(self, message):
-        """Set a message for display in any info area.
+        """Set a buffered message for display in any status area.
         
         Positional arguments:
             message -- message to be buffered.
             
-        Replace the error marker, if any.
+        Replace error/notification markers, if any.
         """
         if message.startswith('!'):
             message = f'Error: {message.split("!", maxsplit=1)[1].strip()}'
@@ -93,6 +97,9 @@ class ViewBase(ABC):
     def show_error(self, message, title=None):
         """Display an error message box.
         
+        Positional arguments:
+            message -- error message to be displayed.
+            
         Optional arguments:
             title -- title to be displayed on the window frame.
         """
@@ -103,6 +110,9 @@ class ViewBase(ABC):
     def show_info(self, message, title=None):
         """Display an informational message box.
         
+        Positional arguments:
+            message -- informational message to be displayed.
+            
         Optional arguments:
             title -- title to be displayed on the window frame.
         """
@@ -128,12 +138,16 @@ class ViewBase(ABC):
         self.root.mainloop()
 
     def unlock(self):
-        """Make the "unlocked" state visible."""
+        """Enable changes on the model."""
         for viewComponent in self._viewComponents:
             viewComponent.unlock()
 
     def unregister_view(self, viewComponent):
-        """Revove a view object from the composite list."""
+        """Revove a view object from the component list.
+        
+        Positional arguments:
+            viewComponent -- Reference to a ViewComponentBase subclass instance.
+        """
         if viewComponent in self._viewComponents:
             self._viewComponents.remove(viewComponent)
 

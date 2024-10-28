@@ -35,6 +35,6 @@ class ModelBase(ABC):
             self._clients.remove(client)
 
     def on_element_change(self):
-        """Callback function to report model element modifications."""
+        """Callback function that reports changes in the model."""
         self.isModified = True
 

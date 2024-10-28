@@ -23,11 +23,11 @@ class PopUpBase(ViewComponentBase, tk.Toplevel):
         self.focus()
 
     def disable_menu(self):
-        """Disable menu entries when no project is open."""
+        """Disable UI widgets when no project is open."""
         pass
 
     def enable_menu(self):
-        """Enable menu entries when a project is open."""
+        """Enable UI widgets when a project is open."""
         pass
 
     def lock(self):

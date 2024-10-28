@@ -1,5 +1,11 @@
 ## Changelog
 
+
+### Version 1.0.0
+
+- Remove the pick_list module, which is project-specific for *novelibre*. 
+- Revise the docstrings.
+
 ### Version 0.6.0
 
 - Add an icon setter (move from novxlib).

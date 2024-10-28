@@ -25,6 +25,7 @@ class MyView(ViewBase):
 class MyController(ControllerBase):
 
     def __init__(self, title):
+        super().__init__(title)
         self._mdl = MyModel()
         self._mdl.register_client(self)
         self._ui = MyView(self._mdl, self, title)

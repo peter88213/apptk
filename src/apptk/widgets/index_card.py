@@ -62,6 +62,6 @@ class IndexCard(tk.Frame):
         self.bodyBox.config(state='disabled')
 
     def unlock(self):
-        """eneable element change."""
+        """Enable element change."""
         self.titleEntry.config(state='normal')
         self.bodyBox.config(state='normal')

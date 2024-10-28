@@ -24,11 +24,11 @@ class PluginBase(ABC):
         self._ctrl = controller
 
     def disable_menu(self):
-        """Disable menu entries when no project is open."""
+        """Disable UI widgets, e.g. when no project is open."""
         pass
 
     def enable_menu(self):
-        """Enable menu entries when a project is open."""
+        """Enable UI widgets, e.g. when a project is opened."""
         pass
 
     def on_close(self):
@@ -36,6 +36,6 @@ class PluginBase(ABC):
         pass
 
     def on_quit(self):
-        """Actions to be performed when mdnovel is closed."""
+        """Actions to be performed when the application is closed."""
         pass
 

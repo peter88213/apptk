@@ -17,7 +17,7 @@ class PluginCollection(list):
             self.append(plugin(model, view, controller))
 
     def disable_menu(self):
-        """Disable menu entries when no project is open."""
+        """Disable UI widgets when no project is open."""
         for plugin in self:
             try:
                 plugin.disable_menu()
@@ -25,7 +25,7 @@ class PluginCollection(list):
                 pass
 
     def enable_menu(self):
-        """Enable menu entries when a project is open."""
+        """Enable UI widgets when a project is open."""
         for plugin in self:
             try:
                 plugin.enable_menu()
