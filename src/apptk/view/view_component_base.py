@@ -23,7 +23,15 @@ class ViewComponentBase(ABC):
         """Enable menu entries when a project is open."""
         pass
 
+    def lock(self):
+        """Inhibit changes on the model."""
+        pass
+
     def refresh(self):
         """Refresh the view after model change."""
+        pass
+
+    def unlock(self):
+        """Enable changes on the model."""
         pass
 
