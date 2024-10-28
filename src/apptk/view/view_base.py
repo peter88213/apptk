@@ -23,6 +23,8 @@ class ViewBase(ABC):
         self.title = title
         self._mdl.register_client(self)
         self._viewComponents = []
+        self.infoWhatText = ''
+        self.infoHowText = ''
 
     def ask_yes_no(self, text, title=None):
         """Query yes or no with a pop-up box.
@@ -65,6 +67,28 @@ class ViewBase(ABC):
         """Add a view object to the composite list."""
         if not viewComponent in self._viewComponents:
             self._viewComponents.append(viewComponent)
+
+    def set_info(self, message):
+        """Set a message for display in any info area.
+        
+        Positional arguments:
+            message -- message to be buffered.
+        """
+        self.infoWhatText = message
+
+    def set_status(self, message):
+        """Set a message for display in any info area.
+        
+        Positional arguments:
+            message -- message to be buffered.
+            
+        Replace the error marker, if any.
+        """
+        if message.startswith('!'):
+            message = f'Error: {message.split("!", maxsplit=1)[1].strip()}'
+        elif message.startswith('#'):
+            message = f'Notification: {message.split("#", maxsplit=1)[1].strip()}'
+        self.infoHowText = message
 
     def show_error(self, message, title=None):
         """Display an error message box.
