@@ -47,6 +47,11 @@ class ViewBase(ABC):
         for viewComponent in self._viewComponents:
             viewComponent.enable_menu()
 
+    def lock(self):
+        """Make the "locked" state visible."""
+        for viewComponent in self._viewComponents:
+            viewComponent.lock()
+
     def on_quit(self):
         """Gracefully close the user interface."""
         self.root.quit()
@@ -97,6 +102,11 @@ class ViewBase(ABC):
         Note: This can not be done in the constructor method.
         """
         self.root.mainloop()
+
+    def unlock(self):
+        """Make the "unlocked" state visible."""
+        for viewComponent in self._viewComponents:
+            viewComponent.unlock()
 
     def unregister_view(self, viewComponent):
         """Revove a view object from the composite list."""
