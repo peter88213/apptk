@@ -1,2 +1,2 @@
 # apptk
-A MCV application framework using tkinter
+A MVC application framework using tkinter
