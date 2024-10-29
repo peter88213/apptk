@@ -1,6 +1,10 @@
 ## Changelog
 
 
+### Version 1.1.0
+
+- Add a PercentageBar widget.
+
 ### Version 1.0.0
 
 - Remove the pick_list module, which is project-specific for *novelibre*. 
