@@ -1,5 +1,8 @@
 ## Changelog
 
+### Version 2.0.0
+
+- Rename and revise the pop-up base class.
 
 ### Version 1.1.0
 
