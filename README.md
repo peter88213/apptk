@@ -6,7 +6,7 @@ using tkinter and applying the Model-View-Controller design pattern.
 - Abstract base classes for model, view, and controller.
 - Abstract base classes for view subcomponents and pop-up windows.
 - Abstract base classes for plugins.
-- Widgets, e.g folding frame, pick list, rich text box.
+- Widgets, e.g folding frame, tooltips, labeled entries, rich text box.
 
 ## Requirements
 
@@ -24,7 +24,6 @@ See https://github.com/peter88213/novxlib/blob/main/docs/conventions.md
 
 - [Python](https://python.org) version 3.12.
 - [Eclipse IDE](https://eclipse.org) with [PyDev](https://pydev.org) and *EGit*.
-- Apache Ant is used for building applications
 
 ## License
 
