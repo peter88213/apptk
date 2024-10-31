@@ -20,6 +20,15 @@ class ControllerBase(ABC):
         # self._ui = MyView(self._mdl, self, title)
         # self.plugins = PluginCollection(self._mdl, self._ui, self)
 
+    @property
+    def isLocked(self):
+        # Boolean -- True if the project is locked.
+        return self._internalLockFlag
+
+    @isLocked.setter
+    def isLocked(self, setFlag):
+        raise NotImplementedError
+
     def disable_menu(self):
         """Disable UI widgets when no project is open."""
         self._ui.disable_menu()

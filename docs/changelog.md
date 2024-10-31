@@ -1,5 +1,9 @@
 ## Changelog
 
+### Version 2.2.0
+
+- Add the isLocked property to the ControllerBase class.
+
 ### Version 2.1.0
 
 - Add lock/unlock capatibility to the plugin system.
