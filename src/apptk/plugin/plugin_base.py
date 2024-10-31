@@ -8,7 +8,14 @@ from abc import ABC, abstractmethod
 
 
 class PluginBase(ABC):
-    """Abstract Plugin base class."""
+    """Abstract Plugin base class.
+    
+    Accepts commands from the plugin collection:
+        - close
+        - quit
+        - enable/disable menu
+        - lock  
+    """
 
     @abstractmethod
     def __init__(self, model, view, controller):
@@ -31,11 +38,19 @@ class PluginBase(ABC):
         """Enable UI widgets, e.g. when a project is opened."""
         pass
 
+    def lock(self):
+        """Inhibit changes on the model."""
+        pass
+
     def on_close(self):
         """Actions to be performed when a project is closed."""
         pass
 
     def on_quit(self):
         """Actions to be performed when the application is closed."""
+        pass
+
+    def unlock(self):
+        """Enable changes on the model."""
         pass
 

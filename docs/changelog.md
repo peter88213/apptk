@@ -1,5 +1,12 @@
 ## Changelog
 
+### Version 2.1.0
+
+- Add lock/unlock capatibility to the plugin system.
+- Add methods for registering/unregistering subviews to the ViewComponentBase class.
+- Make ViewBase a ViewComponentBase subclass.
+- Update docstrings and code comments.
+
 ### Version 2.0.0
 
 - Rename and revise the pop-up base class.

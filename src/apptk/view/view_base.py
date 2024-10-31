@@ -4,27 +4,24 @@ Copyright (c) 2024 Peter Triesberger
 For further information see https://github.com/peter88213/apptk
 License: GNU LGPLv3 (https://www.gnu.org/licenses/lgpl-3.0.en.html)
 """
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from tkinter import messagebox
 
+from apptk.view.view_component_base import ViewComponentBase
 import tkinter as tk
 
 
-class ViewBase(ABC):
+class ViewBase(ViewComponentBase):
 
     @abstractmethod
     def __init__(self, model, controller, title):
-        """Create a composite structure for view components."""
-        self._mdl = model
-        self._ctrl = controller
+        ViewComponentBase.__init__(self, model, self, controller)
+
         self.root = tk.Tk()
         self.root.protocol("WM_DELETE_WINDOW", self._ctrl.on_quit)
         self.root.title(title)
         self.title = title
         self._mdl.register_client(self)
-
-        self._viewComponents = []
-        # applying the Composite design pattern
 
         self.infoWhatText = ''
         self.infoHowText = ''
@@ -43,38 +40,9 @@ class ViewBase(ABC):
             title = self.title
         return messagebox.askyesno(title, text)
 
-    def disable_menu(self):
-        """Disable UI widgets, e.g. when no project is open."""
-        for viewComponent in self._viewComponents:
-            viewComponent.disable_menu()
-
-    def enable_menu(self):
-        """Enable UI widgets, e.g. when a project is opened."""
-        for viewComponent in self._viewComponents:
-            viewComponent.enable_menu()
-
-    def lock(self):
-        """Inhibit changes on the model."""
-        for viewComponent in self._viewComponents:
-            viewComponent.lock()
-
     def on_quit(self):
         """Gracefully close the user interface."""
         self.root.quit()
-
-    def refresh(self):
-        """Refresh all view components."""
-        for viewComponent in self._viewComponents:
-            viewComponent.refresh()
-
-    def register_view(self, viewComponent):
-        """Add a view object to the composite list.
-        
-        Positional arguments:
-            viewComponent -- Reference to a ViewComponentBase subclass instance.
-        """
-        if not viewComponent in self._viewComponents:
-            self._viewComponents.append(viewComponent)
 
     def set_info(self, message):
         """Set a buffered message for display in any info area.
@@ -140,18 +108,4 @@ class ViewBase(ABC):
         Note: This can not be done in the constructor method.
         """
         self.root.mainloop()
-
-    def unlock(self):
-        """Enable changes on the model."""
-        for viewComponent in self._viewComponents:
-            viewComponent.unlock()
-
-    def unregister_view(self, viewComponent):
-        """Revove a view object from the component list.
-        
-        Positional arguments:
-            viewComponent -- Reference to a ViewComponentBase subclass instance.
-        """
-        if viewComponent in self._viewComponents:
-            self._viewComponents.remove(viewComponent)
 
