@@ -1,5 +1,9 @@
 ## Changelog
 
+### Version 2.3.0
+
+- Add a Yes/No/Cancel dialog to the ViewBase class.
+
 ### Version 2.2.0
 
 - Add the isLocked property to the ControllerBase class.
