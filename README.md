@@ -13,7 +13,7 @@ using tkinter and applying the Model-View-Controller design pattern.
 **Note**
 
 This library was used for [novelibre](https://github.com/peter88213/novelibre) 
-version 4.15 and 4.16. It is now deprecated.
+version 4.15 and 4.16. It is now abandoned.
 Advanced versions of the MVC classes are now included with *novelibre* 4.17+.
 
 ---
