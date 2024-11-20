@@ -8,6 +8,16 @@ using tkinter and applying the Model-View-Controller design pattern.
 - Abstract base classes for plugins.
 - Widgets, e.g folding frame, tooltips, labeled entries, rich text box.
 
+---
+
+**Note**
+
+This library was used for [novelibre](https://github.com/peter88213/novelibre) 
+version 4.15 and 4.16. It is now deprecated.
+Advanced versions of the MVC classes are now included with *novelibre* 4.17+.
+
+---
+
 ## Requirements
 
 - [Python](https://www.python.org) version 3.6+.
