@@ -17,7 +17,7 @@ version 4.15 and 4.16. It is now abandoned.
 Advanced versions of the MVC classes are now included with *novelibre* 4.17+.
 
 The *mvclib* package was included with *novelibre* up to version 5.11. 
-The MVC classe are now moved to the nvlib package. 
+The MVC classes are now moved to the *nvlib* package. 
 
 ---
 
